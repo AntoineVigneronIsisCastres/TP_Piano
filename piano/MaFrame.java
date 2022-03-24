@@ -1,6 +1,8 @@
 package piano;
 import java.awt.Color;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.sound.midi.Instrument;
 import javax.sound.midi.MidiChannel;
@@ -11,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 public class MaFrame extends JFrame implements MouseListener, ActionListener {
+
+    Map<String,Integer> notes = new HashMap<String,Integer>();
 
     public MaFrame(){
         setSize(500,300);
@@ -46,38 +50,16 @@ public class MaFrame extends JFrame implements MouseListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("Plonk");
         System.out.println(e.getActionCommand());
-        switch(e.getActionCommand()){
-   
-            case "DO4": 
-                playNote(60, 0);
-                break;
+        notes.put("DO4",60);
+        notes.put("RE",62);
+        notes.put("MI",64);
+        notes.put("FA",65);
+        notes.put("SOL",67);
+        notes.put("LA",69);
+        notes.put("SI",71);
+        notes.put("DO5",72);
         
-            case "RE":
-                playNote(62, 0);
-                break;
-        
-            case "MI":
-                playNote(64, 0);
-                break;
-            case "FA":
-                playNote(65, 0);
-                break;
-            case "SOL":
-                playNote(67, 0);
-                break;
-            case "LA":
-                playNote(67, 0);
-                break;
-            case "SI":
-                playNote(69, 0);
-                break;
-            case "DO5":
-                playNote(70, 0);
-                break;
-            default:
-                System.out.println("Choix incorrect");
-                break;
-        }
+        playNote(notes.get(e.getActionCommand()), 0);
         
     }
 
