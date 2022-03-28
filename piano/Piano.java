@@ -3,6 +3,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.util.Map;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,11 +12,7 @@ import javax.swing.JPanel;
 
 public class Piano {
     public static void main(String[] args) {
-        JFrame fen = new MaFrame();
-        
-        JLabel j11 = new JLabel("Superbe Etiquette");
-        JLabel j12 = new JLabel("Magnifique Etiquette");
-        
+        MaFrame fen = new MaFrame();
         JButton do4 = new JButton("DO4");
         JButton re = new JButton("RE");
         JButton mi = new JButton("MI");
@@ -23,7 +21,8 @@ public class Piano {
         JButton la = new JButton("LA");
         JButton si = new JButton("SI");
         JButton do5 = new JButton("DO5");
-
+        JLabel j11 = fen.j11;
+        JLabel j12 = fen.j12;
         fen.addMouseListener((MouseListener) fen);
         do4.addActionListener((ActionListener) fen);
         re.addActionListener((ActionListener) fen);

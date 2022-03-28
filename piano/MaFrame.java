@@ -10,16 +10,29 @@ import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
 public class MaFrame extends JFrame implements MouseListener, ActionListener {
 
     Map<String,Integer> notes = new HashMap<String,Integer>();
+    protected JLabel j11;
+    protected JLabel j12;
 
     public MaFrame(){
+        j11 = new JLabel("Superbe Etiquette");
+        j12 = new JLabel("Magnifique Etiquette");
         setSize(500,300);
         setTitle("Voilà une fenêtre");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        notes.put("DO4",60);
+        notes.put("RE",62);
+        notes.put("MI",64);
+        notes.put("FA",65);
+        notes.put("SOL",67);
+        notes.put("LA",69);
+        notes.put("SI",71);
+        notes.put("DO5",72);
     }
 
     public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -50,16 +63,8 @@ public class MaFrame extends JFrame implements MouseListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("Plonk");
         System.out.println(e.getActionCommand());
-        notes.put("DO4",60);
-        notes.put("RE",62);
-        notes.put("MI",64);
-        notes.put("FA",65);
-        notes.put("SOL",67);
-        notes.put("LA",69);
-        notes.put("SI",71);
-        notes.put("DO5",72);
-        
         playNote(notes.get(e.getActionCommand()), 0);
+        j12.setText(""+notes.get(e.getActionCommand())+" de code midi :"+e.getActionCommand());
         
     }
 
@@ -97,5 +102,9 @@ public class MaFrame extends JFrame implements MouseListener, ActionListener {
     
         }).start();
     
+    }
+
+    public JLabel getNote() {
+        return this.j12;
     }
 }
